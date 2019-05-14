@@ -17,12 +17,16 @@ class RequestApi(private val url : String, private val callback: NetworkCallback
 
     override fun doInBackground(vararg params: String?): BaseResponse {
         val baseResponse : BaseResponse = FoodsResponse()
-        val request = Request.Builder().url(url).build()
-        val call = client.newCall(request)
-        val response : Response = call.execute()
-        baseResponse.responseCode = response.code()
-        baseResponse.response = response.body()!!.string()
-        return baseResponse
+        try {
+            val request = Request.Builder().url(url).build()
+            val call = client.newCall(request)
+            val response : Response = call.execute()
+            baseResponse.responseCode = response.code()
+            baseResponse.response = response.body()!!.string()
+            return baseResponse
+        } catch (exception : Exception) {
+            return baseResponse
+        }
     }
 
     override fun onPostExecute(result: BaseResponse?) {
