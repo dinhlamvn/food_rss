@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Foodook</string>
+
+    <string-array name="screens">
+        <item>ON SALE</item>
+        <item>TOP PICKS</item>
+        <item>CATEGORIES</item>
+    </string-array>
+
+    <string-array name="category">
+        <item>Bakery</item>
+        <item>Beverages</item>
+        <item>Breakfast, Cereals &amp; Bars</item>
+        <item>Candy</item>
+        <item>Cannabis</item>
+        <item>Dairy</item>
+        <item>Meals &amp; Sides</item>
+        <item>Meat, Poultry &amp; Seafood</item>
+        <item>Sauces &amp; Marinades</item>
+        <item>Snacks &amp; Appetizers</item>
+    </string-array>
+
+    <string-array name="food_urls">
+        <item>https://www.preparedfoods.com/rss/topic/2230-bakery</item>
+        <item>https://www.preparedfoods.com/rss/topic/2193-beverages</item>
+        <item>https://www.preparedfoods.com/rss/topic/2194-breakfast-cereals-bars</item>
+        <item>https://www.preparedfoods.com/rss/topic/2852-candy</item>
+        <item>https://www.preparedfoods.com/rss/topic/5824-cannabis</item>
+        <item>https://www.preparedfoods.com/rss/topic/2231-dairy</item>
+        <item>https://www.preparedfoods.com/rss/topic/2184-meals-sides</item>
+        <item>https://www.preparedfoods.com/rss/topic/2797-meat-poultry-seafood</item>
+        <item>https://www.preparedfoods.com/rss/topic/2275-sauces-marinades</item>
+        <item>https://www.preparedfoods.com/rss/topic/2233-snacks-appetizers</item>
+    </string-array>
+
+</resources>
