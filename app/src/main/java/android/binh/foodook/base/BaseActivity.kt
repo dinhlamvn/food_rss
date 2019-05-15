@@ -8,6 +8,9 @@ import com.kaopiz.kprogresshud.KProgressHUD
 
 abstract class BaseActivity : AppCompatActivity() {
 
+    companion object {
+        const val REQUEST_SEE_COOK_DETAIL : Int = 1001
+    }
     private var mProgress : KProgressHUD? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

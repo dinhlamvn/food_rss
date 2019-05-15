@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Foodook</string>
 
+    <string name="label_total_time">TOTAL TIME</string>
+    <string name="label_prep">PREP</string>
+    <string name="label_cook">COOK</string>
+    <string name="label_ingredients">Ingredients</string>
+    <string name="label_directions">Directions</string>
+
+
+
     <string-array name="screens">
         <item>ON SALE</item>
         <item>TOP PICKS</item>

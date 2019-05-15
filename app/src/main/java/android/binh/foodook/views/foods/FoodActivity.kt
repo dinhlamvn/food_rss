@@ -3,20 +3,20 @@ package android.binh.foodook.views.foods
 import android.binh.foodook.R
 import android.binh.foodook.base.BaseActivity
 import android.binh.foodook.models.food.Food
-import android.binh.foodook.views.main.MainContract
+import android.binh.foodook.views.cook.CookDetailActivity
+import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.DialogTitle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_foods.*
 
-class FoodActivity : BaseActivity(), FoodContract.View {
+class FoodActivity : BaseActivity(), FoodContract.View, OnFoodItemClickListener {
 
     private val presenter : FoodPresenter = FoodPresenter()
     private var items : MutableList<Food> = ArrayList<Food>()
-    private var adapter : FoodAdapter = FoodAdapter(items)
+    private var adapter : FoodAdapter = FoodAdapter(items, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class FoodActivity : BaseActivity(), FoodContract.View {
         val title : String = intent!!.getStringExtra("title")
         val url : String = intent!!.getStringExtra("url")
 
-        showActionBarTitle(title)
+        setUpActionBarTitle(title)
 
         initListFood()
 
@@ -58,7 +58,7 @@ class FoodActivity : BaseActivity(), FoodContract.View {
         finish()
     }
 
-    private fun showActionBarTitle(title: String) {
+    private fun setUpActionBarTitle(title: String) {
         supportActionBar!!.title = title
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
@@ -73,6 +73,12 @@ class FoodActivity : BaseActivity(), FoodContract.View {
     override fun onLoadFoodsFailed(error: String) {
         dismissProgress()
         Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onFoodItemClick(foodName: String) {
+        val intent = Intent(this, CookDetailActivity::class.java)
+        intent.putExtra("food_name", foodName)
+        startActivityForResult(intent, REQUEST_SEE_COOK_DETAIL)
     }
 
 }

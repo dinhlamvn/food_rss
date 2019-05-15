@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 
-class FoodAdapter(private var items : List<Food>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+class FoodAdapter(private var items : List<Food>, private var listener: OnFoodItemClickListener) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, type: Int): FoodViewHolder {
         val view : View = LayoutInflater.from(parent.context).inflate(R.layout.food_item_row, parent, false)
@@ -20,7 +20,10 @@ class FoodAdapter(private var items : List<Food>) : RecyclerView.Adapter<FoodAda
 
     override fun onBindViewHolder(viewHolder: FoodViewHolder, position: Int) {
         val food : Food = items[position]
-        viewHolder.bind(food)
+        val onClickListener : View.OnClickListener = View.OnClickListener {
+            listener.onFoodItemClick(food.name)
+        }
+        viewHolder.bind(food, onClickListener)
     }
 
     override fun getItemCount(): Int = items.size
@@ -30,10 +33,10 @@ class FoodAdapter(private var items : List<Food>) : RecyclerView.Adapter<FoodAda
         private val textName : TextView = view.findViewById(R.id.text_name)
         private val imageView : ImageView = view.findViewById(R.id.image_view)
 
-        fun bind(food : Food) {
+        fun bind(food : Food, onClickListener: View.OnClickListener) {
             textName.text = food.name
-
             Glide.with(itemView).load(food.image).centerCrop().skipMemoryCache(false).into(imageView)
+            itemView.setOnClickListener(onClickListener)
         }
     }
 }
