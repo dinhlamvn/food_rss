@@ -12,18 +12,17 @@ class FoodPresenter : BasePresenter(), FoodContract.Presenter {
 
     private val parser : IDataParser = XMLParser()
 
-    override fun getView(): BaseView = mBaseView
+    override fun getView(): FoodContract.View = mBaseView as FoodContract.View
 
     override fun loadFoods(url: String) {
         mApiManager.getFromUrl(url, object : NetworkCallback<BaseResponse> {
             override fun onLoadFinished(response: BaseResponse) {
-                val view = getView() as FoodContract.View
                 if (response.isFailed()) {
-                    view.onLoadFoodsFailed(response.response)
+                    getView().onLoadFoodsFailed(response.response)
                 } else if (response.isSucceed()) {
                     // do some thing
                     val lists : MutableList<Food> = parser.parseFood(response.response)
-                    view.onLoadFoodsFinished(lists)
+                    getView().onLoadFoodsFinished(lists)
                 }
             }
         })

@@ -5,5 +5,5 @@ import android.binh.foodook.base.BaseView
 
 class CookDetailPresenter : BasePresenter() {
 
-    override fun getView(): BaseView = mBaseView
+    override fun getView(): CookDetailContract.View = mBaseView as CookDetailContract.View
 }

@@ -5,5 +5,5 @@ import android.binh.foodook.base.BaseView
 
 class SalePresenter : BasePresenter() {
 
-    override fun getView(): BaseView = mBaseView as SaleContract.View
+    override fun getView(): SaleContract.View = mBaseView as SaleContract.View
 }

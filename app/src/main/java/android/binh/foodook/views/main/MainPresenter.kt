@@ -5,6 +5,6 @@ import android.binh.foodook.base.BaseView
 
 class MainPresenter : BasePresenter() {
 
-    override fun getView(): BaseView = mBaseView as MainContract.View
+    override fun getView(): MainContract.View = mBaseView as MainContract.View
 
 }
